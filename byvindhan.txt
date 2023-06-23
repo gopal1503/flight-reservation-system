@@ -1,0 +1,342 @@
+import React, { useEffect, useState } from "react";
+import AdminService from "../Service/Adminservice";
+import { useNavigate } from "react-router-dom";
+
+function Addvehicle() {
+  const navigate = useNavigate();
+  const vehicleID = window.location.pathname.split("/")[2];
+
+  const [data, setdata] = useState({
+    name: "",
+    registrationNumber: "",
+    seatingapacity: "",
+    farePerKM: "",
+    type: "",
+  });
+  useEffect(() => {
+    if (vehicleID) {
+      AdminService.getVehicelById(vehicleID).then((res) => {
+        setdata({
+          name: res.name,
+          registrationNumber: res.registrationNumber,
+          seatingapacity: res.seatingapacity,
+          farePerKM: res.farePerKM,
+          type: res.type,
+          vehicleID: res.vehicleID,
+        });
+      });
+    }
+  }, [vehicleID]);
+
+  const handlechange = (e) => {
+    setdata({ ...data, [e.target.id]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (vehicleID) {
+      AdminService.putVehicle(data).then((res) => {
+        alert("Vehicle is Updated");
+        navigate("/vehiclelist");
+      });
+    } else {
+      AdminService.postVehicle(data).then((res) => {
+        alert("Vehicle is Added");
+        navigate("/vehiclelist");
+      });
+    }
+  };
+  console.log(data);
+  return (
+    <div>
+      <h1>{vehicleID ? "EditVehicle" : "AddVehicle"}</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Vehicle-Name</label>
+        <input
+          type="text"
+          onChange={handlechange}
+          id="name"
+          required
+          value={data.name}
+        />
+        <br />
+        <label>Vehicle-Rg-No</label>
+        <input
+          type="text"
+          onChange={handlechange}
+          id="registrationNumber"
+          required
+          value={data.registrationNumber}
+        />
+        <br />
+        <label>Vehicle-Capacity</label>
+        <input
+          type="text"
+          onChange={handlechange}
+          id="seatingapacity"
+          required
+          value={data.seatingapacity}
+        />
+        <br />
+        <label>Vehicle-Fare/Km</label>
+        <input
+          type="text"
+          onChange={handlechange}
+          id="farePerKM"
+          required
+          value={data.farePerKM}
+        />
+        <br />
+        <label>Vehicle-Type</label>
+        <input
+          type="text"
+          onChange={handlechange}
+          id="type"
+          required
+          value={data.type}
+        />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+export default Addvehicle;
+
+
+
+import React, { useEffect, useState } from "react";
+import AdminService from "../Service/Adminservice";
+import { Link, useNavigate } from "react-router-dom";
+
+function Vehiclelist() {
+  const navigate = useNavigate();
+  const [vehicle, setvehicle] = useState([]);
+
+  useEffect(() => {
+    AdminService.getVehicle().then((res) => setvehicle(res));
+  }, []);
+
+  const create = () => {
+    navigate("/addvehicle");
+  };
+  const deletevehicle = (id) => {
+    let ans = window.confirm(`Do you want Delete ${id} `);
+    if (ans) {
+      AdminService.deleteVehicle(id).then(() => {
+        setvehicle(vehicle.filter((item) => item.vehicleID !== id));
+      });
+    } else {
+      return;
+    }
+  };
+  return (
+    <div>
+      <h1>Vehicles</h1>
+      <button onClick={create}>Create</button>
+      <table cellPadding="2px" border="1px" align="center">
+        <thead>
+          <tr>
+            <td>VehicleID</td>
+            <td>Vehicle-Name</td>
+            <td>Vehicle-No</td>
+            <td>Vehicle-Capacity</td>
+            <td>Vehicle-Fare/Km</td>
+            <td>Vehicle-Type</td>
+          </tr>
+        </thead>
+        <tbody>
+          {vehicle.map((v) => {
+            return (
+              <tr key={v.vehicleID}>
+                <td>{v.vehicleID}</td>
+                <td>{v.name}</td>
+                <td>{v.registrationNumber}</td>
+                <td>{v.seatingapacity}</td>
+                <td>
+                  <span>Rs- </span>
+                  {v.farePerKM}
+                </td>
+                <td>{v.type}</td>
+                <td>
+                  <Link to={`/editvehicle/${v.vehicleID}`}>Edit</Link>
+                </td>
+                <td>
+                  <button onClick={() => deletevehicle(v.vehicleID)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Vehiclelist;
+
+
+
+
+
+import React, { useEffect, useState } from "react";
+import AdminService from "../Service/Adminservice";
+import { useNavigate } from "react-router-dom";
+
+function AddDriver() {
+  const navigate = useNavigate();
+  const driverID = parseInt(window.location.pathname.split("/")[2]);
+  //  alert(driverID);
+
+  const [driver, setdriver] = useState({});
+  const [vehicle, setvehicle] = useState([]);
+  const [id, setid] = useState();
+
+  useEffect(() => {
+    AdminService.getVehicle().then((res) => setvehicle(res));
+  }, []);
+
+  useEffect(() => {
+    if (id !== null) {
+      AdminService.getVehicelById(id).then((res) =>
+        setdriver({
+          ...driver,
+          vehicleBean: {
+            name: res.name,
+            registrationNumber: res.registrationNumber,
+            seatingapacity: res.seatingapacity,
+            farePerKM: res.farePerKM,
+            type: res.type,
+            vehicleID: res.vehicleID,
+          },
+        })
+      );
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (driverID) {
+      AdminService.getDriverById(driverID).then((res) =>
+        setdriver({
+          driverID: res.driverID,
+          name: res.name,
+          licenseNumber: res.licenseNumber,
+          mobileno: res.mobileno,
+          location: res.location,
+          street: res.street,
+          state: res.state,
+          vehicleBean: {
+            name: res.name,
+            registrationNumber: res.vehicleBean.registrationNumber,
+            seatingapacity: res.vehicleBean.seatingapacity,
+            farePerKM: res.vehicleBean.farePerKM,
+            type: res.vehicleBean.type,
+            vehicleID: res.vehicleBean.vehicleID,
+          },
+        })
+      );
+    }
+  }, [driverID]);
+
+  const handleselect = (e) => {
+    setid(parseInt(e.target.value));
+  };
+
+  const handlechange = (e) => {
+    setdriver({ ...driver, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (driverID) {
+      AdminService.putDriver(driver).then((res) => {
+        alert("Driver is Updated");
+        navigate("/adddriver");
+      });
+    } else {
+      AdminService.postDriver(driver).then((res) => {
+        alert("Driver is Added");
+        navigate("/adddriver");
+      });
+    }
+  };
+
+  return (
+    <div>
+      <h1>{driverID ? "EditDriver" : "Add Driver"}</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Driver-Name</label>
+        <input
+          type="text"
+          id="name"
+          onChange={handlechange}
+          required
+          value={driver.name}
+        />
+        <label>LicenseNumber</label>
+        <input
+          type="text"
+          id="licenseNumber"
+          onChange={handlechange}
+          required
+          value={driver.licenseNumber}
+        />
+        <label>Mobileno</label>
+        <input
+          type="text"
+          id="mobileno"
+          onChange={handlechange}
+          required
+          value={driver.mobileno}
+        />
+        <label>Location</label>
+        <input
+          type="text"
+          id="location"
+          onChange={handlechange}
+          required
+          value={driver.location}
+        />
+        <label>Street</label>
+        <input
+          type="text"
+          id="street"
+          onChange={handlechange}
+          required
+          value={driver.street}
+        />
+        <label>State</label>
+        <input
+          type="text"
+          id="state"
+          onChange={handlechange}
+          required
+          value={driver.state}
+        />
+        <label>Select Vehicle</label>
+        <select
+          id="vehicleBean"
+          onChange={handleselect}
+          value={driver.vehicleBean?.vehicleID}
+        >
+          <option>---Select-Vehicle---</option>
+          {vehicle.map((v) => {
+            return (
+              <option value={v.vehicleID} key={v.vehicleID}>
+                {v.name}
+                <span> - </span>
+                {v.registrationNumber}
+              </option>
+            );
+          })}
+        </select>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+export default AddDriver;

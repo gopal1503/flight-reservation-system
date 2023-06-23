@@ -1,0 +1,19 @@
+HELM COMMANDS:
+-------------
+
+1.helm version.
+2.select drive then =>create new folder(md HelmDemo) then =>(helm create myhelm).
+3.dir myhelm(for windows).
+4.ls myhelm(for linux).
+5.helm install myhelm-chart myhelm/ --values myhelm/values.yaml.
+6.kubectl get pods -n kube-system.
+7.minikube start.
+8.kubectl get deployments.
+
+
+LINUX:
+-----
+1.su root.
+2.wget https://get.helm.sh/helm-v3.9.3-linux-amd64.tar.gz.
+3.tar xvf helm-v3.9.3-linux-amd64.tar.gz.
+4.wget install https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64.

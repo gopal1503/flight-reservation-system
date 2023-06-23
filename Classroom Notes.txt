@@ -1,0 +1,647 @@
+3 ways we can create Javascript:
+1. Inline js	(Inside body)
+2. Internal js	(Inside head)
+3. External js	(Outside file)
+
+NTM - Check out any good code formatters.
+NTM - Check out any good command line cheatsheets.
+
+Tasks:
+1. Even or odd	- Done
+2. Prime or not
+
+js ES6 - js ECMA Script
+
+3 ways we can create Javascript:
+1. Inline css	(Inside body)
+2. Internal css	(Inside head)
+3. External css	(Outside file)
+
+------------------------------------------------------------------------------------------------------------
+
+Javasciprt Objects:
+1. Simple Object
+2. JSON Object
+3. Dynamic Object
+
+------------------------------------------------------------------------------------------------------------
+
+Node terminal
+
+REPL Mode - Read Evaluate Print & Loop
+
+------------------------------------------------------------------------------------------------------------
+
+Typescript is a superset of Javascript. It supports functional as well as class features.
+It supports type (unlike Javascript). It comes under ECMA script.
+
+Typescript is considered under ES5.
+
+es -> ECMA Script
+
+es1
+es2
+es3
+es4
+es5 - class features
+es6
+es7
+
+babel is a scripting library which helps browser understand class library.
+
+------------------------------------------------------------------------------------------------------------
+
+Install react : npm install -g create-react-app
+
+Check version : npm view react version
+
+Create project : create-react-app my-app (delete powershell file in npm folder in case of error)
+
+Get in the project : cd my-app
+
+Start: npm start
+
+------------------------------------------------------------------------------------------------------------
+
+React is a front end javascript framework. Designed and developed by Meta.
+
+Famous for implementing a virtual DOM.
+
+React fundamentals:
+1. Javascript and HTML in the same file (JSX - Javascript with XML)
+2. Embrace functional programming
+3. Components everywhere
+
+AJAX - Asynchronous Javascript and XML
+
+------------------------------------------------------------------------------------------------------------
+
+Functional component is stateless (Changes aren't reflected).
+Class component is stateful (changes are reflected instantaneously).
+
+------------------------------------------------------------------------------------------------------------
+
+JSX - Javascript with XML extension.
+
+------------------------------------------------------------------------------------------------------------
+
+3 ways to access CSS in JS
+
+1. Inline styling
+2. CSS Stylesheets
+3. CSS Modules
+
+------------------------------------------------------------------------------------------------------------
+
+Controlled Forms vs Uncontrolled Forms
+
+Controlled forms take in and store the data whereas Uncontrolled forms only read the data. Eg. We use
+controlled forms for Sign Up pages while we use uncontrolled forms for Sign In pages.
+
+------------------------------------------------------------------------------------------------------------
+
+React Hooks
+
+-useState
+-useEffect
+-useRef
+-useContext
+-useReducer
+-useCallback
+-useMemo
+-Custom Hooks
+
+------------------------------------------------------------------------------------------------------------
+
+cd Desktop
+npm install -g expo-cli
+expo init my-project / npx create-react-app my-project
+cd my-project
+code .
+
+npm start/npx expo start
+
+------------------------------------------------------------------------------------------------------------
+
+MVC - Model View Controller
+
+view		->	controller	->	model			->		db
+(React.JS)		(typescript)	(php/springboot)		(MongoDB)
+(Angular.JS)	(Angular.JS)	(.NET)
+(Ember.JS)		(Angular.JS)
+
+JSP-Servlet-	JSP-Servlet-	JSP-Hibernate-
+Springboot		Springboot		Springboot
+
+
+Full stack project.
+We use web services to connect.
+
+REST - JSON. Supports AJAX calls.
+
+Angular uses Model View View Model (MVVM).
+
+
+jQuery - (Minimal Code. More actions.) Its an advanced Javascript library.
+
+------------------------------------------------------------------------------------------------------------
+
+Redux - State containers
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+Java
+-----
+
+Types of variables:
+1. Instance variable 			(Object variable - can be accessed only by objects)
+2. Class level or Static variable	(Can be accessed without object creation)
+3. Local variable
+
+
+Throwable class:
+1. Exception - Its an erroneous event which happens either at compile-time (checked exception) or run-time 
+(unchecked exception).
+2. Error (e.g: JVMError, StackOverflow, StackUnderflow)
+
+
+Checked exception
+------------------
+FileNotFoundException
+IOException
+SQLException
+InterruptedException
+ClassNotFoundException
+
+
+Unchecked exception
+-------------------
+ArithematicException
+NullPointerException
+NumberFormatException
+ArrayIndexOutOfBoundsException
+
+
+Exception Handling
+------------------
+Try 		->	Monitors for any potential exception(s).
+Throw 	->	Manually throw an exception.
+Throws	->	Report an exception. (Not best practice)
+Catch		->	Specify action(s) for the thrown excpetion(s).
+
+User-defined exception class always extends exception.
+E.g: public ExceptionClass extends Exception {}
+
+
+------------------------------------------------------------------------------------------------------------
+
+SQL
+---
+
+mysql> create schema manipal;
+
+mysql> connect manipal;
+Connection id:    14
+Current database: manipal
+
+mysql> create table Student1(RollNo int,Name varchar(20),Branch varchar(10));
+Query OK, 0 rows affected (0.43 sec)
+
+------------------------------------------------------------------------------------------------------------
+
+JDBC
+-----
+
+Register -> Load -> Connection -> Statement (Prepared Statement) -> ResultSet -> Close
+<------ jar ------>	
+
+Methods in Statement Interface:
+-execute() - returns Boolean
+-executeUpdate() - returns Int
+-executeQuery("select * from emp") - returns ResultSet
+
+Prepared statement -> Pre-compiled SQL statements
+
+------------------------------------------------------------------------------------------------------------
+
+
+Project Structure
+------------------
+View	->	Bean	->	DAO (data access object)	->	DB
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+Collections
+-----------
+
+Collection is a framework which has set of classes (Hashset, ArrayList, etc) and interfaces (Set, List, Queue) 
+through which we can organise data. It organises group of objects as a single entity.
+
+It is dynamic and heterogeneous (unlike array-based like arrays, stacks, queues, lls, etc.).
+
+				Collection
+					|
+		-----------------------------------------
+		|						    |
+	     Set (HashSet, LinkedHashSet)		   List (ArrayList, Vector, LinkedList, Stack)
+		|
+	    Sorted Set (TreeSet)
+
+Collection is introduced in JDK 2.0.
+
+OrderedData
+UnOrderedData
+SortedData
+UnSortedData
+
+List 	-> Allows duplicate data; Stores element in index based; Ordered data
+Set	-> Doesnt allow duplicate data; Doesnt use index-based. Instead uses object-based. 
+	   Unordered data.
+
+NOTE: Linked HashSet is ordered data.
+
+NOTE: TreeSet takes the first assigned data type as the data type for all other objects. So
+its partially homogeneous.
+
+NOTE: JDK 5.0 introduced generics concept. It assigns a fixed datatype to a collection interface/class.
+
+NOTE: List alone supports get-set. Enhanced for-loop can be used for all.
+
+------------------------------------------------------------------------------------------------------------
+
+
+Java Server Pages(JSP) and Servlet
+----------------------------------
+
+Dynamic Web Application
+
+Web Server -> Apache Tomcat Server 9.0
+
+JSP is like an extension for servlet.
+
+
+Tags in JSP
+-----------
+
+1. Directive Tag
+Syntax: <%@ %>
+
+3 types of directive tags:
+	1. page
+	2. include
+	3. taglib
+
+2. Scriplet Tag
+Syntax: <% %>
+
+3. Expression Tag (for printing the statement)
+Syntax: <%= %>
+
+4. Declaration Tag (for declaring)
+Syntax: <%! %>
+
+5. Action Tag
+<jsp:useBean />
+<jsp:include />
+<jsp:forward />
+<jsp:param />
+<jsp:setProperty />
+<jsp:getProperty />
+
+
+Objects in JSP
+--------------
+
+9 implicit objects in JSP: (see javatpoint)
+1. out
+2. request
+3. response
+4. config
+5. application
+6. session
+7. pageContext
+8. page
+9. exception
+
+
+JSP Life Cycle
+--------------
+JSP -> JSP translator -> Servlet -> Compiler -> Class file -> JRE -> Servlet object -> Buffer(dynamic content)
+
+Lifecyle methods (in jsp):
+----------------
+jspInit()
+_jspService()
+jspDestroy()
+
+
+------------------------------------------------------------------------------------------------------------
+
+Jar - Java archive
+War - Web archive
+Ear - Enterprise archive
+Rar - Resource archive
+
+
+------------------------------------------------------------------------------------------------------------
+
+Java 8
+------
+
+Enables functional programming in Java (Object-oriented programming).
+
+
+Functional Interface - Interface with only one abstract method. It is implemented using Lambda expression.
+
+References - Another way of implementation for functional interface.
+3 methods:
+	1. Reference to an instance method
+	2. Reference to a static method
+	3. Reference to a constructor
+
+Java 8 stream reference: https://www.javatpoint.com/java-8-stream
+
+------------------------------------------------------------------------------------------------------------
+
+Spring
+------
+
+It is a lightweight framework (control of creation of objects is with Spring).
+
+Advantages:
+1. Dependency Injection (DI)
+2. Containerised
+
+Container (IOC -> Inversion of Control) (2 Types):
+1. ApplicationContext - Java, J2EE
+2. BeanFactory - Java
+
+
+Springboot
+-----------
+It downloads the jar file for required project by using Maven (Spring application can be boot by jar file).
+
+Maven and Gradle are built tools.
+
+POM.xml (Project Object Model)
+
+
+Ways to create SpringBoot project:
+----------------------------------
+1. Spring Initializer
+2. Spring Starter Project
+3. Maven Project
+4. CLI
+
+Dependencies:
+1) Spring-jdbc
+
+JDBC Template class
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+JPA (Java Persistence API)
+--------------------------
+
+interfaces
+----------
+CrudRepository
+
+JPARepository
+
+save()
+findById()
+findAll()
+delete()
+
+				JPA
+				 |
+	-------------------------------------------------
+   	|								|
+    IBatis						   Hibernate (Java)
+
+
+POJO (Plain Old Java Object)
+
+------------------------------------------------------------------------------------------------------------
+
+MongoDB
+
+BJSON - Binary JSON
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+Web Services
+------------
+Used to establish communication between two softwares.
+
+REST (Representational State Transfer) and SOAP (Simple Object Access Protocol) (JSON format) ; UDDI (Universal 
+Decription, Discovery and Integration) ; WSDL (Web Services Definition Language)
+
+SOAP is a protocol whereas REST is a architectural pattern. REST can make use of SOAP whereas the converse is 
+not true.
+(https://www.guru99.com/comparison-between-web-services.html)
+
+Supports XML form of data. REST is diverse and can be used for almost anything.
+WSDL is like XML.
+
+React <------> Sprinboot
+
+APIs help in allowing other software to access the functions of software without needing access to DBs or code.
+
+
+		  UDDI / WSDL 
+Consumer <-------------------> Service Provider
+
+
+XML File: http://thomas-bayer.com/sqlrest
+
+REST uses @GetMapping
+
+@EnableWS and add dependency for using Web Service in Spring
+
+------------------------------------------------------------------------------------------------------------
+
+
+MySQL
+-----
+
+CMD command for :
+
+1. connection : mysql -u <username> -p
+
+2. view dbs : show databases;
+
+3. db connect : use <dbname>
+
+4. view tables : show tables;
+
+5. table description : desc <tablename>;
+
+6. exit : exit;
+
+7. clear screen : cls;
+
+8. db creation : create schema <dbname>; or create database <dbname>;
+
+9. delete db : drop database <dbname>;
+
+
+DDL (Data Definition Language)
+DQL (Data Query Language)
+DML (Data Manipulation Language)
+DCL (Data Control Language)
+TCL (Transaction Control Language)
+
+DDL commands 	-> create (create)
+			-> drop (delete)
+			-> alter (modify an existing)
+			-> truncate (removes all data while maintaining table structure)
+			-> comment
+			-> rename
+
+DQL commands	-> select
+
+DML commands	-> insert
+			-> update
+			-> delete
+			-> lock
+			-> call (call a PL/SQL or Java subprogram)
+			-> explain plan
+
+DCL commands	-> grant
+			-> revoke
+
+TCL commands	-> begin
+			-> commit
+			-> rollback
+			-> savepoint
+			-> set transaction
+
+10. alter table:
+	
+	1. alter table <tablename> add column <columnname> <type>;
+	2. alter table <tablename> modify column <columnname> <type>;
+	3. alter table <tablename> drop column <columnname>;
+	4. alter table <tablename> rename column <oldcolumnname> to <newcolumnname>;
+	
+11. Creating a new user (in master user) : create user '<username>'@'localhost' identified by '<password>';
+
+12. Grant all privileges : grant all on *.* to '<username>'@'localhost';
+    (Similarly for revoke)
+
+13. Flush all privileges : flush privileges;
+
+NOTE : Before manually establishing a new connection in workbench, grant access to that user in root and then use the very same username and password.
+
+14. Insert command : insert into <tablename>(columnname 1, columnname2, etc.) values ('value1', 'value2', etc.);
+
+15. Update command : update <tablename> set columnname=<value>, etc. where <condition>;
+
+16. Selective format (for date; using date_format method) :  select date_format('2023-03-07', '%Y %M');
+									    :  select date_format('2023-03-07','%M');	
+
+17. Current date : curdate();
+
+18. Count and distinct : count() & distinct()
+
+19. Aliasing : using "as" keyword
+
+20. Scalar functions : act on multiple fields for the result (e.g. MAX, MIN, SUM, etc.).
+
+21. Comparators : < , <= , > , >= , !=, =
+
+22. Keys : Primary , Foreign Key
+
+23. Constraints : Not null , Unique , Index , Check , Default , Auto_Increment , Enum , Keys
+
+Examples : create table emp222 (EmpNo int, EmpName varchar(20) Not Null, age int, Salary int, constraint emp_pk primary key (EmpNo, EmpName), check (age>=23));
+
+Second Primary Key only is linked to the first Primary Key. Its combination should be a primary key (Independent PKs can repeat in this case).
+
+alter table emp222 drop primary key;
+
+alter table emp222 add primary key(EmpNo);
+
+------------------------------------------------------------------------------------------------------------------
+NOTE : Delete vs Truncate vs Drop
+(Deletes selective rows/fields ; Removes all data while keeping table structure ; Deletes table/db permanently)
+------------------------------------------------------------------------------------------------------------------
+
+use manipal1;
+SELECT * FROM manipal1.emp111;
+insert into emp111 values (104, 'Hari', 27 , 20000);
+start transaction;
+savepoint s1;
+delete from emp111 where Name = 'Hari';
+rollback to savepoint s1;
+
+23. Join : 
+		-> Inner Join (common to both tables)
+		-> Left Join (all corresponding selections from left table and common)
+		-> Right Join (common and all corresponding selections from right table)
+		-> Outer Join (all corresponding selections from all tables - not valid in MySQL)
+		-> Cross Join (all corresponding selections from all tables - valid in MySQL)
+
+Examples : select store.storeId, store.storeName, food.foodName, food.Quantity from store inner join food on store.storeId=food.storeId;
+
+
+Triggers
+---------
+(refer Cheatsheet)
+
+
+Index
+------
+-> Indexes speeds up the query. They are not visible to the user as such.
+
+-> Two types of indexes : Clustered index and Non-clustered index.
+
+
+View
+-----
+-> Temporary data presentation structure.
+
+
+Union
+------
+-> Combining two select statements.
+
+
+Like
+-----
+-> Filtered selection.
+
+
+Aggregate functions
+-------------------
+1. AVG();
+2. COUNT();
+3. FIRST();
+4. LAST();
+5. MAX();
+6. MIN();
+7. SUM();
+
+
+Scalar functions
+----------------
+1. UCASE();
+2. LCASE();
+3. MID();
+4. LEN();
+5. ROUND();
+6. NOW();
+7. FORMAT();
+
+

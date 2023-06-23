@@ -1,0 +1,146 @@
+SQL commands for cmd prompt:
+--- -------- --- --- -------
+
+1.mysql -u root -p  =>it opens workbench,
+
+Enter password:root,
+
+2.show databases;=>it will show all the databases,
+
+3.use schema name;=>it will use that schema,
+
+4.show tables;=>it will show the table values,
+
+5.create schema name;=>it wil create new table,
+
+6.create table name;=>it will create new table,
+
+7.desc table name;=>it will opens the table,
+
+8. alter table student add column DateOfBirth date;=>used to add a new column,
+
+9. alter table student modify studentid varchar(20);=>used to modify the previous values,
+
+10. alter table student drop Address;=>used to drop the column or table,
+
+11. alter table student rename column DateOfBirth to DOB;=>used to change the column name,
+
+12. CREATE USER 'gokul'@'localhost'IDENTIFIED BY'root';=>used to create a new user,
+
+13. GRANT ALL ON *.* TO 'gokul'@'localhost';=>it will give  all the permissions, 
+
+14. update student set stuname='gokul',stumail='gopal@gmail.com' where studentid='101';
+
+15. select date_format('2000-03-15','%Y');=>it will select only the year,
+
+15.select date_format('2000-03-15','%Y %M ');=>it will select year and month,
+
+16.select distint(column name) from table name;=>distinct is a function i finds the duplicate values,
+
+17.select count(column name) from table name;=>it gives the totall count,
+
+18. select distinct (empName)as gokul,DOJ as date from employee;=>it change the column name temperorily,
+
+19.select sum(salary) from employee;=>it gives the sum of that column,
+
+20.select max(salary) from employee;=>it shows the who is getting high salary,
+
+21.select Name,sum(Investment) invest from company group by Name;=>instead of where we can use 
+
+
+
+
+example for group by keyword;
+-----------------------------
+mysql> create table STUDENT1(Name varchar(45),Subject varchar(45),Marks int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into STUDENT1 values('gopal','tamil',82),('gokul','english',92),('gopal','maths',75),('sam','hindi',100),('sam','java',100);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from STUDENT1;
++-------+---------+-------+
+| Name  | Subject | Marks |
++-------+---------+-------+
+| gopal | tamil   |    82 |
+| gokul | english |    92 |
+| gopal | maths   |    75 |
+| sam   | hindi   |   100 |
+| sam   | java    |   100 |
++-------+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select Name,sum(Marks) total from STUDENT1 group by Name ;
++-------+-------+
+| Name  | total |
++-------+-------+
+| gopal |   157 |
+| gokul |    92 |
+| sam   |   200 |
++-------+-------+
+3 rows in set (0.00 sec)
+
+
+DML=>data manipulation language.
+
+
+
+
+SQL TRIGGERS:
+
+
+use bank
+
+
+
+
+select *from employee
+select *from employee_log1
+
+insert into employee values(3,'9786901677','null')
+
+--INSERT TRIGGER--
+
+CREATE TRIGGER third_trigger on employee after insert 
+as 
+Begin
+    insert into employee_log1 select contact_number,'inserted',GETDATE() from inserted
+End
+GO
+
+
+delete from employee where employee_id=2
+
+DROP TRIGGER update_trigger;
+
+--DELETE TRIGGER--
+
+CREATE TRIGGER sixth_trigger
+ON employee
+AFTER DELETE
+AS
+BEGIN
+    INSERT INTO employee_log1 (employee_log, action, ATime)
+    SELECT deleted.employee_id, 'deleted', GETDATE()
+    FROM deleted
+END
+GO
+
+update employee set employee_name='krishnan' where employee_id=52         
+
+--UPDATE TRIGGER--
+
+create trigger updated_trigger on employee after update
+AS
+BEGIN
+     insert into employee_log1 select inserted.employee_id ,'updated',GETDATE()
+	 from inserted
+END
+GO
+
+
+
+
+
+

@@ -1,0 +1,193 @@
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import TheaterService from "../service/TheaterService";
+import Movie_ShowService from "../service/Movie_ShowService";
+import { useNavigate } from "react-router-dom";
+
+function Theaters() {
+  const [theaters, setTheaters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const Add2 = () => {
+    navigate("/newmovie2");
+  };
+  const Add3=()=>{
+    navigate("/")
+  }
+
+  useEffect(() => {
+    Movie_ShowService.getAllTheaters().then((res) => {
+      setTheaters(res.data);
+    });
+  }, []);
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredTheaters = theaters.filter((movieshow) =>
+    movieshow.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div>
+      <h2 className="text-center">Theaters</h2>
+      <button className="btn btn-primary" onClick={Add2}>
+        ADD MOVIES
+      </button>
+      <div className="row">
+        <div className="col-md-6">
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search by Show Name"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <table className="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Theater Id</th>
+              <th>Theater Name</th>
+              <th>Theater Address</th>
+              <th>Theater Contact</th>
+              <th>Theater Capacity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredTheaters.map((theater) => (
+              <tr key={theater.theater_id}>
+                <td>{theater.theater_id}</td>
+                <td>{theater.name}</td>
+                <td>{theater.address}</td>
+                <td>{theater.contact_no}</td>
+                <td>{theater.capacity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <button className="btn-dark" class="float-right" onClick={Add3}>BACK HOME</button>
+    </div>
+  );
+}
+
+export default Theaters;
+
+
+
+
+
+
+
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import TheaterService from "../service/TheaterService";
+import Movie_ShowService from "../service/Movie_ShowService";
+import { useNavigate } from "react-router-dom";
+
+function Theaters() {
+  const [theaters, setTheaters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const Add2 = () => {
+    navigate("/newmovie2");
+  };
+
+  const Add3 = () => {
+    navigate("/");
+  };
+
+  useEffect(() => {
+    Movie_ShowService.getAllTheaters().then((res) => {
+      setTheaters(res.data);
+    });
+  }, []);
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredTheaters = theaters.filter((movieshow) =>
+    movieshow.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleDelete = (id) => {
+    Movie_ShowService.deleteTheater(theaterId)
+      .then(() => {
+        setTheaters((prevTheaters) =>
+          prevTheaters.filter((theater) => theater.theater_id !== id)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <div>
+      <h2 className="text-center">Theaters</h2>
+      <button className="btn btn-primary" onClick={Add2}>
+        ADD MOVIES
+      </button>
+      <div className="row">
+        <div className="col-md-6">
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search by Show Name"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <table className="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Theater Id</th>
+              <th>Theater Name</th>
+              <th>Theater Address</th>
+              <th>Theater Contact</th>
+              <th>Theater Capacity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredTheaters.map((theater) => (
+              <tr key={theater.theater_id}>
+                <td>{theater.theater_id}</td>
+                <td>{theater.name}</td>
+                <td>{theater.address}</td>
+                <td>{theater.contact_no}</td>
+                <td>{theater.capacity}</td>
+                <td>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(theater.theater_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <button className="btn-dark" class="float-right" onClick={Add3}>
+        BACK HOME
+      </button>
+    </div>
+  );
+}
+
+export default Theaters;

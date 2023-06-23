@@ -1,0 +1,63 @@
+REACT
+-----
+
+ES6 features
+
+1.jsx
+2.components
+3.state
+4.props
+
+components=>reusable codes.
+
+in b/w the function and return statements we have to write the js codes.
+
+DOM=>document object model.
+
+js follows real DOM
+react follows virtual DOM
+
+use of react
+1.improves performance.
+2.reduces rendering time.
+
+components are of two types:
+1.class components.
+2.functional components.
+
+class components:
+1.inbuild life cycle methods.
+
+functional components:
+1.no life cycle methods in it,it is an plain component.
+2.hooks.
+3.we use useEffect hook for lifecycle methods in functional component.
+syntax of useEffect  useEffect(()=>{initialization},[dependencies])=>two arguments
+
+node modules=>important for the project to run.
+
+BABLE and WEBPACK=>it is an compiler.
+
+react.strictMode=>prevent from crashes(runtime errors).
+
+Every component should return only one Element.
+
+Every component should have one fragment (or)wrapping tag.
+
+
+STATE:
+-----
+1.for storing data in component level not in app level.
+2.useState.
+synatx=>const[data,seData]=useState().=>it is an array with two parameters one is initialization and another one is for setting values.
+
+PROPS:
+-----
+1.props are like input to the components which is used to pass the data b/w the components.
+
+package.json
+------------
+1.it contains all the dependencies.
+
+
+map, filter, find, foreach,reduce
